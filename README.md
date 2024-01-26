@@ -35,22 +35,22 @@ $DATA_ROOT
 ```
 Place images and labels at appropriate location.
 
-### **2.2. Generate ground truth offsets **  
+### **2.2. Generate ground truth offsets**  
 openseg.pytorch/lib/datasets/preprocess/cityscapes/dt_offset_generator.py  
 Before generate offsets, revise [label_list](https://github.com/openseg-group/openseg.pytorch/blob/aefc75517b09068d7131a69420bc5f66cb41f0ee/lib/datasets/preprocess/cityscapes/dt_offset_generator.py#L47) first to fit custom datasets.  
 ```python
 python ./lib/datasets/preprocess/cityscapes/dt_offset_generator.py
 ```
 
-### **2.3. Download ImageNet pretrained mode **  
+### **2.3. Download ImageNet pretrained mode**  
 Before starting training, you should download the corresponding ImageNet pretrained models to ./pretrained_model.
 [hrnet18](https://github.com/hsfzxjy/models.storage/releases/download/openseg-pytorch-pretrained/hrnetv2_w18_imagenet_pretrained.pth), [hrnet32](https://github.com/hsfzxjy/models.storage/releases/download/openseg-pytorch-pretrained/hrnetv2_w32_imagenet_pretrained.pth), [hrnet48](https://github.com/hsfzxjy/models.storage/releases/download/openseg-pytorch-pretrained/hrnetv2_w48_imagenet_pretrained.pth), [hrnet2x20](https://github.com/hsfzxjy/models.storage/releases/download/openseg-pytorch-pretrained/hr_rnet_bt_w20_imagenet_pretrained.pth)
 
-### **2.4. Train Config **  
+### **2.4. Train Config**  
 You should revise ./config/cityscapes/H_SEGFIX.json such as [num_classes](https://github.com/openseg-group/openseg.pytorch/blob/aefc75517b09068d7131a69420bc5f66cb41f0ee/configs/cityscapes/H_SEGFIX.json#L7), [label_list](https://github.com/openseg-group/openseg.pytorch/blob/aefc75517b09068d7131a69420bc5f66cb41f0ee/configs/cityscapes/H_SEGFIX.json#L8), [colorlist](https://github.com/openseg-group/openseg.pytorch/blob/aefc75517b09068d7131a69420bc5f66cb41f0ee/configs/cityscapes/H_SEGFIX.json#L80), [loss_weight](https://github.com/openseg-group/openseg.pytorch/blob/aefc75517b09068d7131a69420bc5f66cb41f0ee/configs/cityscapes/H_SEGFIX.json#L139) to fit custom datasets.
 Also you need to properly adjust [batch sizes](https://github.com/openseg-group/openseg.pytorch/blob/aefc75517b09068d7131a69420bc5f66cb41f0ee/configs/cityscapes/H_SEGFIX.json#L14).
 
-### **2.5. SegFix Training **  
+### **2.5. SegFix Training**  
 ```bash
 bash scripts/cityscapes/segfix/<script>.sh train 1
 ```
