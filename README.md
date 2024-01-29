@@ -54,3 +54,23 @@ Lastly, check [export dt_num_classes](https://github.com/openseg-group/openseg.p
 ```bash
 bash scripts/cityscapes/segfix/<script>.sh train 1
 ```
+
+### **2.6. Offset Generation**  
+```bash
+# Predict offsets for val set and save to path
+bash scripts/cityscapes/segfix/run_h_48_d_4_segfix.sh segfix_pred_val 1
+```
+
+### **2.7. Refinement**  
+You can use `scripts/cityscapes/segfix.py` to apply SegFix on your own label files.
+```bash
+python scripts/cityscapes/segfix.py \
+  --input <path/to/your/label/dir> \
+  --split <SPLIT> \
+  [ --offset <OFFSET_DIR>] \
+  [ --out <OUT_DIR>]
+```
+where 
+  + `<SPLIT>` is `test` or `val`.
+  + `<OFFSET_DIR>` is the location of SegFix offsets, default to `$DATA_ROOT/cityscapes/val/offset_pred/[semantic | instance]/offset_hrnext/` or `$DATA_ROOT/cityscapes/test_offset/[semantic | instance]/offset_hrnext/`.
+  + `<OUT_DIR>` is an optional output directory.
